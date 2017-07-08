@@ -6,7 +6,7 @@ import  '../css/MainForm.global.css';
 
 import Datastore from 'nedb';
 const db = new Datastore({ filename: 'datasource/datafile', autoload: true });
-export default class Home extends Component {
+export default class MainForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {dbData: []};
@@ -30,7 +30,7 @@ export default class Home extends Component {
 	}
 	render() {
 		return (
-			<div className="container-fluid">
+			<div id="mainForm" className="container">
 				<div className="row">
 					<div className="col-sm-2">
 						<div>{this.state.dbData ? this.state.dbData.map(option => option.a

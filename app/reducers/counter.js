@@ -1,6 +1,6 @@
 // @flow
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/counter';
-
+import { fromJS } from 'immutable';
 export type counterStateType = {
   counter: number
 };
@@ -8,8 +8,15 @@ export type counterStateType = {
 type actionType = {
   type: string
 };
-
-export default function counter(state: number = 0, action: actionType) {
+const initialState = fromJS({
+    "submitObj":{
+        "isCurrentCarrierVerizon": "N",
+        "contractWithCurrentCarrier": "N",
+        "currentdeviceTradeIn": "N"
+    },
+    
+});
+export default function counter(state=initialState, action: actionType) {
   switch (action.type) {
     case INCREMENT_COUNTER:
       return state + 1;
