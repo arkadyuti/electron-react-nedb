@@ -1,0 +1,18 @@
+{
+  "name": "electron-react-nedb",
+  "productName": "electron-react-nedb",
+  "version": "1.0.0",
+  "description": "Electron application based on React, React Router, nedb, Webpack",
+  "main": "./main.prod.js",
+  "author": {
+    "name": "Arkadyuti",
+    "email": "arkadooti.sarkar@gmail.com",
+    "url": "https://github.com/arkadyuti"
+  },
+  "scripts": {
+    "postinstall": "npm rebuild --runtime=electron --target=1.6.6 --disturl=https://atom.io/download/atom-shell --build-from-source"
+  },
+  "license": "MIT",
+  "dependencies": {
+  }
+}
