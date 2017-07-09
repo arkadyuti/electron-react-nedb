@@ -21,6 +21,8 @@ export default class Billing extends Component {
 			formData[field] = this.refs[field].value;
 		}
 
+		const timeStamp = Date.now();
+
 		const tempData = Object.assign({}, {
 			productID : formData.productID,
 			productDesc: formData.productDesc,
@@ -34,6 +36,7 @@ export default class Billing extends Component {
 			customerName: formData.customerName,
 			phoneNumber: formData.phoneNumber,
 			address: formData.address,
+			timeStamp,
 			productDetails: tempBill
 		});
 
@@ -45,7 +48,6 @@ export default class Billing extends Component {
 	_addAnotherBill = (e) => {
 		const { state, refs } = this;
 		const { addAnotherBill } = state;
-		const { parentElement } = e.target;
 		const tempBill = addAnotherBill;		
 		const formData = {};
 		for (const field in refs) {
@@ -56,22 +58,18 @@ export default class Billing extends Component {
 			productDesc: formData.productDesc,
 			quantity: formData.quantity,
 			amount: formData.amount,
-			unitPrice: formData.unitPrice
+			unitPrice: formData.unitPrice,
 		})
 		tempBill.push(tempData);
 		this.setState({
 			addAnotherBill: tempBill		
 		});
-		for (const field in refs) {
-			if (field !== ('address' || 'phoneNumber' || 'customerName')) {
-				refs[field].value = '';
-			}
-		}
-		refs.address.value = '';
-		refs.phoneNumber.value = '';
-		refs.customerName.value = '';
-
-		console.log(refs);
+		refs.productID.value = '';
+		refs.productDesc.value = '';
+		refs.quantity.value = '';
+		refs.amount.value = '';
+		refs.unitPrice.value = '';
+		refs.attentionTo.value = '';
 	}
 
 	calculateAmount = (e) => {

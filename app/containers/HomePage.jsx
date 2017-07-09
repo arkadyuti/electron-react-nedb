@@ -28,6 +28,7 @@ export class HomePage extends Component {
   render() {
     // console.log(this.props.location.pathname )
     let location = this.props.location.pathname;
+    console.log(this.props);
     return (
       <div className="window">
         <Header {...this.props} />
@@ -50,8 +51,7 @@ export class HomePage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    main : state.main.toJS(),
-    db : "Ads"
+    main : state.main.toJS()
   };
 }
 

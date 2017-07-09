@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 export default class AddEntry extends Component {
 	constructor(props) {
 		super(props);
@@ -19,6 +17,7 @@ export default class AddEntry extends Component {
 		this.props.db.insert(formData, function (err, data) {   // Callback is optional
 			console.log("Data Inserted", data, err);
 		});
+		document.forms[0].reset();
 	}
 
 	render() {
