@@ -73,7 +73,7 @@ export default class AddEntry extends Component {
 						<input type="text" className="form-control"  ref="price" placeholder="Price" />
 					</div>
 					<div className="form-actions">
-						<button type="submit" className="btn btn-form btn-default">Cancel</button>
+						<button type="reset" className="btn btn-form btn-default">Cancel</button>
 						<button type="submit" className="btn btn-form btn-primary">OK</button>
 					</div>
 				</form>

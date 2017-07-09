@@ -17,7 +17,6 @@ import AddEntry from '../components/AddEntry';
 import Billing from '../components/Billing';
 import OldBills from '../components/OldBills';
 import MyStock from '../components/MyStock';
-import MainForm from '../components/MainForm';
 import Footer from '../components/Footer';
 
 export class HomePage extends Component {
