@@ -33,7 +33,7 @@ export default class LeftMainNav extends Component {
 					</Link>
 					<Link to="entry" className={`nav-group-item ${this.props.location.pathname === '/entry' ? 'active' : ''}`}>
 						<span className="icon icon-pencil"></span>
-						Add Enry
+						Add Entry
 					</Link>
 					<h5 className="nav-group-title">Advance</h5>
 					<Link to="sync" className={`nav-group-item ${this.props.location.pathname === '/sync' ? 'active' : ''}`}>

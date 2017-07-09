@@ -37,12 +37,59 @@ nav .nav-container {
   height: 50px;
   /*background-color: #1f4987;*/
 }
+
 .nav-ico {
   display: inline-block;
   background: no-repeat url("../img/alico_winter_vol_44-512.png");
   background-size: 100%;
   width: 50px;
   height: 50px;
+}
+
+.cart-icon {
+  display: inline-block;
+  background: no-repeat url("../img/cart.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.billing-icon {
+  display: inline-block;
+  background: no-repeat url("../img/billing.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.add-bill-icon {
+  display: inline-block;
+  background: no-repeat url("../img/add_bill.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.old-bill-icon {
+  display: inline-block;
+  background: no-repeat url("../img/old_bill.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.flex-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.cursor {
+  cursor: pointer;
 }
 /*Header - END*/
 
