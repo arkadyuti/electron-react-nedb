@@ -1,11 +1,12 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router';
+import Datastore from 'nedb';
 
 import  '../css/app.global.css';
 import  '../css/photon/photon.global.css';
 // import './css/bootstrap.global.css';
-import { Switch, Route } from 'react-router';
 
 import { showLeftNav } from '../actions';
 
@@ -19,6 +20,7 @@ import OldBills from '../components/OldBills';
 import MyStock from '../components/MyStock';
 import Footer from '../components/Footer';
 
+const db = new Datastore({ filename: 'data/datasource.db', autoload: true });
 export class HomePage extends Component {
   constructor(props) {
 		super(props);
@@ -36,8 +38,8 @@ export class HomePage extends Component {
               <Route exact path='/' component={DashBoard}/>
               <Route path='/billing' component={Billing}/>
               <Route path='/oldBill' component={OldBills}/>
-              <Route path='/stock' component={MyStock}/>
-              <Route path='/entry' component={AddEntry}/>
+              <Route path='/stock' render={()=><MyStock {...this.props} db={db} />} />
+              <Route path="/entry" render={() =><AddEntry {...this.props} db={db} />} />
             </Switch>
           </div>
         </div>
@@ -48,7 +50,8 @@ export class HomePage extends Component {
 }
 const mapStateToProps = state => {
   return {
-    main : state.main.toJS()
+    main : state.main.toJS(),
+    db : "Ads"
   };
 }
 
