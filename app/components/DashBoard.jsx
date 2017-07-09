@@ -25,20 +25,20 @@ export default class DashBoard extends Component {
 	render() {
 		return (
 		  <div className="pane padded-bottom-more flex-space-around">
-				<div onClick={this._handleBillingIconClick} className="cursor">
-					<div className="billing-icon"></div>
+				<div onClick={this._handleBillingIconClick}>
+					<div className="billing-icon cursor"></div>
 					<div className="text-center">Billing</div>
 				</div>
-				<div onClick={this._handleOldBillingIconClick} className="cursor">
-					<div className="old-bill-icon"></div>
+				<div onClick={this._handleOldBillingIconClick}>
+					<div className="old-bill-icon cursor"></div>
 					<div className="text-center">View Old Bill</div>
 				</div>
-				<div onClick={this._handleCartIconClick} className="cursor">
-					<div className="cart-icon"></div>
+				<div onClick={this._handleCartIconClick}>
+					<div className="cart-icon cursor"></div>
 					<div className="text-center">My Stock</div>
 				</div>
-				<div onClick={this._handleAddBillingIconClick} className="cursor">
-					<div className="add-bill-icon"></div>
+				<div onClick={this._handleAddBillingIconClick}>
+					<div className="add-bill-icon cursor"></div>
 					<div className="text-center">Add Entry</div>
 				</div>
       </div>
