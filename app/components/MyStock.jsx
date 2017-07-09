@@ -19,6 +19,11 @@ export default class MyStock extends Component {
     });
     console.log('got called')
   }
+
+  _handleClick = (e) => {
+    e.preventdefault()
+  }
+
 	render() {
     const { state } = this;
     const { productData } = state;

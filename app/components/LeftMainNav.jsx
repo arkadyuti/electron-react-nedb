@@ -15,28 +15,28 @@ export default class LeftMainNav extends Component {
 			<div className="pane pane-sm sidebar">
 				<nav className="nav-group">
 					<h5 className="nav-group-title">Favorites</h5>
-					<Link to="/" className="nav-group-item active">
+					<Link to="/" className={`nav-group-item ${this.props.location.pathname === '/' ? 'active' : ''}`}>
 						<span className="icon icon-home"></span>
 						Home
 					</Link>
-					<Link to="billing" className="nav-group-item">
+					<Link to="billing" className={`nav-group-item ${this.props.location.pathname === '/billing' ? 'active' : ''}`}>
 						<span className="icon icon-print"></span>
 						Billing
 					</Link>
-					<Link to="oldBill" className="nav-group-item">
+					<Link to="oldBill" className={`nav-group-item ${this.props.location.pathname === '/oldBill' ? 'active' : ''}`}>
 						<span className="icon icon-newspaper"></span>
 						View Old Bill
 					</Link>
-					<Link to="stock" className="nav-group-item">
+					<Link to="stock" className={`nav-group-item ${this.props.location.pathname === '/stock' ? 'active' : ''}`}>
 						<span className="icon icon-basket"></span>
 						My Stock
 					</Link>
-					<Link to="entry" className="nav-group-item">
+					<Link to="entry" className={`nav-group-item ${this.props.location.pathname === '/entry' ? 'active' : ''}`}>
 						<span className="icon icon-pencil"></span>
 						Add Enry
 					</Link>
 					<h5 className="nav-group-title">Advance</h5>
-					<Link to="sync" className="nav-group-item">
+					<Link to="sync" className={`nav-group-item ${this.props.location.pathname === '/sync' ? 'active' : ''}`}>
 						<span className="icon icon-picasa"></span>
 						Sync with Server
 					</Link>
