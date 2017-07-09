@@ -70,3 +70,18 @@ nav .nav-container {
 .bill-title{
   margin-bottom: 10px;
 }
+.form-control.search-bill-id{
+  margin-bottom: 10px;
+}
+.search-bill-heading{
+  margin-top: 0;
+}
+.bill-search-wrapper{
+}
+.bill-search-wrapper span {
+  font-size: 20px;
+}
+.bill-search-wrapper button{
+  display: block;
+  font-size: 16px;
+}

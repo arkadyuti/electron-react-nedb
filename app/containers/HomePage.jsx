@@ -28,7 +28,6 @@ export class HomePage extends Component {
 	}
   render() {
     let location = this.props.location.pathname;
-    console.log(this.props);
     return (
       <div className="window">
         <Header {...this.props} />
