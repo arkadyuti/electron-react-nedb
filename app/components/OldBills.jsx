@@ -10,13 +10,13 @@ export default class OldBills extends Component {
 		}
 	}
 	componentDidMount() {
-		this.props.db.find({ _id:"gOJX7WYD3f9fnkoA"}, (err, data) => {
-			this.setState({oldBillWithID : data})
-			console.log(data)
-    });
 	}
 	handleSearch = (e) => {
 		console.log(this.refs.billID.value)
+		this.props.db.find({ stateTimeStamp:this.refs.billID.value}, (err, data) => {
+			this.setState({oldBillWithID : data})
+			console.log("db",data)
+    });
 	}
 	render() {
 		// if(this.state.oldBillWithID)

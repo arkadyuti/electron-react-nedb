@@ -9,7 +9,8 @@ export default class Billing extends Component {
 	constructor(props) {
 		super(props);
 		this.state= {
-			addAnotherBill : []
+			addAnotherBill : [],
+			stateTimeStamp : Date.now()
 		};
 	}
 
@@ -31,12 +32,12 @@ export default class Billing extends Component {
 			unitPrice: formData.unitPrice
 		});
 		tempBill.push(tempData)
-
+		const stateTimeStamp = this.state.stateTimeStamp;
 		const finalDataToSubmit = Object.assign({}, {
 			customerName: formData.customerName,
 			phoneNumber: formData.phoneNumber,
 			address: formData.address,
-			timeStamp,
+			stateTimeStamp,
 			productDetails: tempBill
 		});
 		console.log(this.props)
@@ -79,7 +80,7 @@ export default class Billing extends Component {
 	render() {
 		const { addAnotherBill } = this.state;
 		const showTable = addAnotherBill.length > 0;
-
+		console.log(this.state.stateTimeStamp)
 		const renderTable = addAnotherBill.map((l, index) => {
 
       console.log(l);
@@ -87,6 +88,7 @@ export default class Billing extends Component {
       return (
         <tr key={index}>
           <td>{index + 1}</td>
+          <td>{this.state.stateTimeStamp}</td>
           <td>{l.productName}</td>
           <td>{l.quantity}</td>
           <td>{l.price}</td>
@@ -101,6 +103,7 @@ export default class Billing extends Component {
 						<thead>
 							<tr>
 								<th>SlNo</th>
+								<th>Bill ID</th>
 								<th>Product ID</th>
 								<th>Quantity</th>
 								<th>Price</th>
@@ -111,7 +114,9 @@ export default class Billing extends Component {
 						</tbody>
 					</table>
 				)}
+				
 				<form className="" onSubmit={this._handleFormData}>
+					<h3>Bill ID : {this.state.stateTimeStamp}</h3>
 					<div className="form-group">
 						<label>Customer Name</label>
 						<input type="text" ref="customerName"	className="form-control" placeholder="Customer Name" />
