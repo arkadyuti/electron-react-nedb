@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
 
-const db = new Datastore({ filename: 'data/datasource-billing', autoload: true });
+
 
 export default class Billing extends Component {
 	constructor(props) {
@@ -36,8 +36,8 @@ export default class Billing extends Component {
 			address: formData.address,
 			productDetails: tempBill
 		});
-
-		db.insert(finalDataToSubmit, function (err, data) {   // Callback is optional
+		console.log(this.props)
+		this.props.db.insert(finalDataToSubmit, function (err, data) {   // Callback is optional
 			console.log("Data Inserted", data, err);
 		});
 	}

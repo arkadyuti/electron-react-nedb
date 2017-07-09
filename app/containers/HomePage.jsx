@@ -21,12 +21,12 @@ import MyStock from '../components/MyStock';
 import Footer from '../components/Footer';
 
 const db = new Datastore({ filename: 'data/datasource.db', autoload: true });
+const dbBilling = new Datastore({ filename: 'data/datasource-billing', autoload: true });
 export class HomePage extends Component {
   constructor(props) {
 		super(props);
 	}
   render() {
-    // console.log(this.props.location.pathname )
     let location = this.props.location.pathname;
     return (
       <div className="window">
@@ -36,8 +36,8 @@ export class HomePage extends Component {
             <LeftMainNav {...this.props} />
             <Switch>
               <Route exact path='/' component={DashBoard}/>
-              <Route path='/billing' component={Billing}/>
-              <Route path='/oldBill' component={OldBills}/>
+              <Route path='/billing' render={()=><Billing {...this.props} db={dbBilling} />} />
+              <Route path='/oldBill' render={()=><OldBills {...this.props} db={dbBilling} />} />
               <Route path='/stock' render={()=><MyStock {...this.props} db={db} />} />
               <Route path="/entry" render={() =><AddEntry {...this.props} db={db} />} />
             </Switch>

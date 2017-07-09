@@ -12,7 +12,6 @@ export default class Home extends Component {
     this.props.showLeftNav(!this.props.main.leftNav);
   }
 	render() {
-    console.log(this.props);
     return(
       <header className="toolbar toolbar-header">
         <h1 className="title">Header</h1>
