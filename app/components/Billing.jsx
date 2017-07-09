@@ -32,7 +32,7 @@ export default class Billing extends Component {
 			unitPrice: formData.unitPrice
 		});
 		tempBill.push(tempData)
-		const stateTimeStamp = this.state.stateTimeStamp;
+		const stateTimeStamp = this.state.stateTimeStamp.toString();
 		const finalDataToSubmit = Object.assign({}, {
 			customerName: formData.customerName,
 			phoneNumber: formData.phoneNumber,
