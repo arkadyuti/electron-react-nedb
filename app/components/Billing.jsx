@@ -78,9 +78,39 @@ export default class Billing extends Component {
 
 	render() {
 		const { addAnotherBill } = this.state;
-		console.log(addAnotherBill)
+		const showTable = addAnotherBill.length > 0;
+
+		const renderTable = addAnotherBill.map((l, index) => {
+
+      console.log(l);
+
+      return (
+        <tr key={index}>
+          <td>{index + 1}</td>
+          <td>{l.productName}</td>
+          <td>{l.quantity}</td>
+          <td>{l.price}</td>
+				</tr>
+      );
+    });
+
 		return (
 			<div className="pane padded-bottom-more entry-form">
+				{showTable && (
+					<table className="table-striped padded-bottom-more">
+						<thead>
+							<tr>
+								<th>SlNo</th>
+								<th>Product ID</th>
+								<th>Quantity</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							{renderTable}
+						</tbody>
+					</table>
+				)}
 				<form className="" onSubmit={this._handleFormData}>
 					<div className="form-group">
 						<label>Customer Name</label>
