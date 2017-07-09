@@ -1,9 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Datastore from 'nedb';
 
-const db = new Datastore({ filename: 'data/datasource', autoload: true });
+
 
 export default class AddEntry extends Component {
 	constructor(props) {
@@ -17,12 +16,13 @@ export default class AddEntry extends Component {
 		}
 		console.log(formData);
 
-		db.insert(formData, function (err, data) {   // Callback is optional
+		this.props.db.insert(formData, function (err, data) {   // Callback is optional
 			console.log("Data Inserted", data, err);
 		});
 	}
 
 	render() {
+		console.log(this.props)
 		return (
 		  <div className="pane padded-bottom-more entry-form">
         <form className="" onSubmit={this._handleFormData}>
