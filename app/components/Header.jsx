@@ -13,7 +13,12 @@ export default class Home extends Component {
     this.props.showLeftNav(!this.props.main.leftNav);
   }
 	render() {
-    console.log(this.props)
+    console.log(this.props);
+    return(
+      <header className="toolbar toolbar-header">
+        <h1 className="title">Header</h1>
+      </header>
+    )
 		return (
 			<header id="header" className="container-fluid header">
         <span className="nav-ico" onClick={this.handleClick.bind(this)}></span>

@@ -12,6 +12,38 @@ export default class LeftMainNav extends Component {
 	}
 	render() {
 		return (
+			<div className="pane pane-sm sidebar">
+				<nav className="nav-group">
+					<h5 className="nav-group-title">Favorites</h5>
+					<Link to="/" className="nav-group-item active">
+						<span className="icon icon-home"></span>
+						Home
+					</Link>
+					<Link to="billing" className="nav-group-item">
+						<span className="icon icon-print"></span>
+						Billing
+					</Link>
+					<Link to="oldBill" className="nav-group-item">
+						<span className="icon icon-newspaper"></span>
+						View Old Bill
+					</Link>
+					<Link to="stock" className="nav-group-item">
+						<span className="icon icon-basket"></span>
+						My Stock
+					</Link>
+					<Link to="entry" className="nav-group-item">
+						<span className="icon icon-pencil"></span>
+						Add Enry
+					</Link>
+					<h5 className="nav-group-title">Advance</h5>
+					<Link to="sync" className="nav-group-item">
+						<span className="icon icon-picasa"></span>
+						Sync with Server
+					</Link>
+				</nav>
+			</div>
+		)
+		return (
 			<nav id="leftMainNav" className="container-fluid lef-main-nav">
 				{this.props.main.leftNav &&
 				<div className="row">
