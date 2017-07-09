@@ -9,7 +9,6 @@ export default class Home extends Component {
     // this.handleClick = this.handleClick.bind(this);
 	}
   handleClick() {
-    console.log(this.props)
     this.props.showLeftNav(!this.props.main.leftNav);
   }
 	render() {
