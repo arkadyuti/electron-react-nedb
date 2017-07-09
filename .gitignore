@@ -48,5 +48,6 @@ dll
 main.js
 main.js.map
 data
+datasource
 .idea
 npm-debug.log.*
