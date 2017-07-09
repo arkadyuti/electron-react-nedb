@@ -6,7 +6,7 @@ import Datastore from 'nedb';
 
 import  '../css/app.global.css';
 import  '../css/photon/photon.global.css';
-// import './css/bootstrap.global.css';
+import '../css/bootstrap-grid.global.css';
 
 import { showLeftNav } from '../actions';
 

@@ -56,3 +56,17 @@ nav .nav-container {
   padding-bottom: 200px;
 }
 /*Entry Form - END*/
+
+.row .billig-wrapper{
+  border: 1px solid #888;
+  padding-right: 10px;
+  padding-left: 10px;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.bill-details {
+  overflow: hidden;
+}
+.bill-title{
+  margin-bottom: 10px;
+}
