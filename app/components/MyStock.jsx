@@ -2,12 +2,9 @@
 import React, { Component } from 'react';
 import Datastore from 'nedb';
 
-
-
 export default class MyStock extends Component {
 	constructor(props) {
     super(props);
-    
     this.state = {
       productData: []
     };
@@ -76,4 +73,3 @@ export default class MyStock extends Component {
 		);
 	}
 }
-          
