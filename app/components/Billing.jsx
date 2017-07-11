@@ -74,17 +74,22 @@ export default class Billing extends Component {
 	}
 
 	calculateAmount = (e) => {
-		this.refs.amount.value = this.refs.unitPrice.value * this.refs.quantity.value;
+		let subTotal = (this.refs.unitPrice.value * this.refs.quantity.value);
+		let discount = this.refs.discount.value;
+		if(discount && discount>0) {
+			subTotal = (subTotal - subTotal*(discount/100));
+		}
+		let totalAmount = subTotal*(18/100)+ subTotal;
+		subTotal = subTotal || 0;
+		totalAmount = totalAmount || 0;
+		this.refs.subTotal.value = subTotal.toFixed(2);
+		this.refs.amount.value = totalAmount.toFixed(2);
 	}
 
 	render() {
 		const { addAnotherBill } = this.state;
 		const showTable = addAnotherBill.length > 0;
-		console.log(this.state.stateTimeStamp)
 		const renderTable = addAnotherBill.map((l, index) => {
-
-      console.log(l);
-
       return (
         <tr key={index}>
           <td>{index + 1}</td>
@@ -156,6 +161,18 @@ export default class Billing extends Component {
 					<div className="form-group">
 						<label>Unit Price</label>
 						<input type="text" onChange={this.calculateAmount} ref="unitPrice"	className="form-control" placeholder="Amount" />
+					</div>
+					<div className="form-group">
+						<label>Sub Total</label>
+						<input type="text" ref="subTotal"	className="form-control" placeholder="Sub Total" />
+					</div>
+					<div className="form-group">
+						<label>Discount (in %)</label>
+						<input type="text" onChange={this.calculateAmount} ref="discount"	className="form-control" placeholder="Discount (in %)" />
+					</div>
+					<div className="form-group">
+						<label>GST (in %)</label>
+						<input type="text" ref="gst"	className="form-control" placeholder="GST (in %)" disabled value="18"/>
 					</div>
 					<div className="form-group">
 						<label>Amount</label>
