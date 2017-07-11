@@ -1,6 +1,15 @@
 // @flow
 import { app, Menu, shell, BrowserWindow } from 'electron';
-
+ 
+require('electron-context-menu')({
+    prepend: (params, browserWindow) => [{
+        label: 'Rainbow',
+        // Only show it when right-clicking images 
+        visible: params.mediaType === 'image'
+    }]
+});
+ 
+// let win;
 export default class MenuBuilder {
   mainWindow: BrowserWindow;
 

@@ -29,6 +29,8 @@ export default class Billing extends Component {
 			productDesc: formData.productDesc,
 			quantity: formData.quantity,
 			amount: formData.amount,
+			subTotal : formData.subTotal,
+			discount: formData.discount,
 			unitPrice: formData.unitPrice
 		});
 		tempBill.push(tempData)
@@ -60,6 +62,8 @@ export default class Billing extends Component {
 			quantity: formData.quantity,
 			amount: formData.amount,
 			unitPrice: formData.unitPrice,
+			subTotal : formData.subTotal,
+			discount: formData.discount
 		})
 		tempBill.push(tempData);
 		this.setState({
@@ -71,6 +75,8 @@ export default class Billing extends Component {
 		refs.amount.value = '';
 		refs.unitPrice.value = '';
 		refs.attentionTo.value = '';
+		refs.subTotal.value = '';
+		refs.discount.value = '';
 	}
 
 	calculateAmount = (e) => {

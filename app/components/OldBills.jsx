@@ -83,7 +83,7 @@ export default class OldBills extends Component {
 							<div className="col-sm-4 offset-sm-2 bill-search-wrapper">
 								<h3 className="search-bill-heading">Search by Bill ID</h3>
 								<span>Bill ID:</span>
-								<input type="text" ref="billID"	className="form-control search-bill-id" value="1499630905924"/>
+								<input type="text" ref="billID"	className="form-control search-bill-id" defaultValue="1499630905924"/>
 								<button type="button" onClick={this.handleSearchID} className="btn btn-form btn-default">Submit</button>
 							</div>
 						</div>
