@@ -48,7 +48,7 @@ class EntryForm extends Component {
   componentWillUnmount() {
   }
 
-  _handleFormData = () => {
+  _handleFormData = (e) => {
     const { props } = this;
     const { onSubmit } = props;
 
