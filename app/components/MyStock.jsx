@@ -1,12 +1,15 @@
 // @flow
 import React, { Component } from 'react';
-import Datastore from 'nedb';
+
+import EditEntry from 'components/EditEntry';
 
 export default class MyStock extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      productData: []
+      productData: [],
+      showEditOption: false,
+      clickedEditButton: void 0
     };
 	}
   componentDidMount() {
@@ -19,15 +22,16 @@ export default class MyStock extends Component {
     });
   }
 
-  _handleClick = (e) => {
-    e.preventdefault()
-  }
+  _handleClick = (e, index) => {
+    this.setState({
+      clickedEditButton: index,
+      showEditOption: true
+    });
+  };
 
 	render() {
-    const { state } = this;
-    const { productData } = state;
-
-    console.log(productData);
+    const { state, props } = this;
+    const { productData, showEditOption, clickedEditButton } = state;
 
     const renderTable = productData.map((l, index) => {
       const args = Object.assign({}, l, {
@@ -35,8 +39,6 @@ export default class MyStock extends Component {
         id: index + 1,
         onClick: (e) => this._handleClick(e, index)
       });
-
-      console.log(l);
 
       return (
         <tr key={index}>
@@ -73,6 +75,12 @@ export default class MyStock extends Component {
             {renderTable}
           </tbody>
         </table>
+        {showEditOption && (
+          <EditEntry
+            clickedEditButton={clickedEditButton}
+            {...props}
+          />
+        )}
       </div>
 		);
 	}

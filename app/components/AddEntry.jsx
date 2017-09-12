@@ -12,15 +12,11 @@ export default class AddEntry extends Component {
 		}
 	}
 	
-	_handleFormData = (e) => {
-		const formData = {};
+	_handleFormData = (e, refs) => {
 		let _this = this;
-		for (const field in this.refs) {
-			formData[field] = this.refs[field].value;
-		}
-		console.log(formData);
+		const { state } = this.__el;
 
-		this.props.dbStock.insert(formData, function (err, data) {   // Callback is optional
+		this.props.dbStock.insert(state, function (err, data) {   // Callback is optional
 			console.log("Data Inserted", data, err);
 			_this.setState({ notification: true})
 		});
@@ -37,6 +33,7 @@ export default class AddEntry extends Component {
 					productCatagoryOptions={productCatagoryOptions}
 					onSubmit={this._handleFormData}
 					defaultProductCatagorySelectedOption={2}
+					ref={c => { this.__el = c; return this.__el; }}
 				/>
 				{this.state.notification && <Success message="Your entry added" />}
       </div>

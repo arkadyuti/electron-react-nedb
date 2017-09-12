@@ -5,25 +5,25 @@ class EntryForm extends Component {
   constructor(props) {
     super(props);
     const { 
-      slNoValue,
-      dateValue,
-      supplierValue,
-      productIDValue,
-      productNameValue,
-      productDescriptionValue,
-      quantityValue,
-      PriceValue,
+      slNo,
+      date,
+      supplier,
+      productID,
+      productName,
+      productDescription,
+      quantity,
+      price,
       defaultProductCatagorySelectedOption
     } = props;
     this.state= {
-      slNoValue,
-      dateValue,
-      supplierValue,
-      productIDValue,
-      productNameValue,
-      productDescriptionValue,
-      quantityValue,
-      PriceValue,
+      slNo,
+      date,
+      supplier,
+      productID,
+      productName,
+      productDescription,
+      quantity,
+      price,
       defaultProductCatagorySelectedOption
     }
   }
@@ -49,11 +49,11 @@ class EntryForm extends Component {
   }
 
   _handleFormData = (e) => {
-    const { props } = this;
+    const { props, __form } = this;
     const { onSubmit } = props;
 
     if (typeof onSubmit === 'function') {
-      onSubmit(e);
+      onSubmit(e, __form);
     }
   };
 
@@ -64,23 +64,82 @@ class EntryForm extends Component {
     });
   }
 
+  _updateSlNo = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      slNo: value
+    });
+  };
+  _updateDate = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      date: value
+    });
+  };
+  _updateSupplier = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      supplier: value
+    });
+  };
+  _updateProductID = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      productID: value
+    });
+  };
+  _updateProductName = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      productName: value
+    });
+  };
+
+  _updateProductDescription = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      productDescription: value
+    });
+  };
+
+  _updateQuantity = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      quantity: value
+    });
+  };
+  _updatePrice = (e) => {
+    const { value } = e.target;
+    console.log(value)
+    this.setState({
+      price: value
+    });
+  };
+
   render() {
     const { state, props } = this;
     const { 
-      slNoValue,
-      dateValue,
-      supplierValue,
-      productIDValue,
-      productNameValue,
-      productDescriptionValue,
-      quantityValue,
-      PriceValue,
+      slNo,
+      date,
+      supplier,
+      productID,
+      productName,
+      productDescription,
+      quantity,
+      price,
       defaultProductCatagorySelectedOption
     } = state;
 
-    const { productCatagoryOptions } = props;
+    const { productCatagoryOptions, formRef } = props;
     
-    const selectOptionOptionArr = productCatagoryOptions.map((item, key) => {
+    const selectOptionOptionArr = productCatagoryOptions && productCatagoryOptions.map((item, key) => {
       const args = Object.assign({}, {
         id: `option-${key}`,
         key: `option-${key}`,
@@ -92,31 +151,30 @@ class EntryForm extends Component {
     });
 
 		return(
-			<form className="" onSubmit={this._handleFormData}>
+			<form className="" onSubmit={this._handleFormData} ref={c => { this.__form = c; return this.__form; }}>
         <div className="form-group">
           <label>Sl No.</label>
-          <FormInput type="text" ref="slNo" value={slNoValue}	className="form-control" placeholder="Sl No." />
+          <FormInput type="text" ref="slNo" value={slNo}	className="form-control" placeholder="Sl No." onChange={this._updateSlNo} />
         </div>
         <div className="form-group">
           <label>Date</label>
-          <FormInput type="date"ref="date" value={dateValue} className="form-control" placeholder="Date"	/>
+          <FormInput type="date"ref="date" value={date} className="form-control" placeholder="Date" onChange={this._updateDate}	/>
         </div>
         <div className="form-group">
           <label>Supplier</label>
-          <FormInput type="text" value={supplierValue} className="form-control" placeholder="Supplier" ref="supplier"
-          />
+          <FormInput type="text" value={supplier} className="form-control" placeholder="Supplier" ref="supplier" onChange={this._updateSupplier}/>
         </div>
         <div className="form-group">
           <label>Product ID</label>
-          <FormInput type="text" value={productIDValue} className="form-control" ref= "productID" placeholder="Product ID" />
+          <FormInput type="text" value={productID} className="form-control" ref= "productID" placeholder="Product ID" onChange={this._updateProductID} />
         </div>
         <div className="form-group">
           <label>Product Name</label>
-          <FormInput type="text" className="form-control" value={productNameValue} ref= "productName" placeholder="Product Name" />
+          <FormInput type="text" className="form-control" value={productName} ref= "productName" placeholder="Product Name" onChange={this._updateProductName} />
         </div>
         <div className="form-group">
           <label>Product Description</label>
-          <textarea type="text" className="form-control"  value={productDescriptionValue} ref= "productDescription" placeholder="Product Description" />
+          <textarea type="text" className="form-control"  value={productDescription} ref= "productDescription" placeholder="Product Description" onChange={this._updateProductDescription} />
         </div>
         <div className="form-group">
           <label>Product Catagory</label>
@@ -126,11 +184,11 @@ class EntryForm extends Component {
         </div>
         <div className="form-group">
           <label>Quantity</label>
-          <FormInput type="text" className="form-control" value={quantityValue} ref="quantity" placeholder="Quantity" />
+          <FormInput type="text" className="form-control" value={quantity} ref="quantity" placeholder="Quantity" onChange={this._updateQuantity} />
         </div>
         <div className="form-group">
           <label>Price</label>
-          <FormInput type="text" className="form-control"  ref="price" placeholder="Price" />
+          <FormInput type="text" value={price} className="form-control"  ref="price" placeholder="Price" onChange={this._updatePrice} />
         </div>
         <div className="form-actions">
           <button type="reset" className="btn btn-form btn-default">Cancel</button>
@@ -143,14 +201,14 @@ class EntryForm extends Component {
 
 EntryForm.propTypes = {
   onSubmit: PropTypes.func,
-  slNoValue: PropTypes.string,
-  dateValue: PropTypes.string,
-  supplierValue: PropTypes.string,
-  productIDValue: PropTypes.string,
-  productNameValue: PropTypes.string,
-  productDescriptionValue: PropTypes.string,
-  quantityValue: PropTypes.string,
-  PriceValue: PropTypes.string,
+  slNo: PropTypes.string,
+  date: PropTypes.string,
+  supplier: PropTypes.string,
+  productID: PropTypes.string,
+  productName: PropTypes.string,
+  productDescription: PropTypes.string,
+  quantity: PropTypes.string,
+  price: PropTypes.string,
   productCatagoryOptions: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({}), PropTypes.string]),
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({}), PropTypes.string])
