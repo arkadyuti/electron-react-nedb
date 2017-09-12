@@ -26,6 +26,7 @@ class EntryForm extends Component {
       price,
       defaultProductCatagorySelectedOption
     }
+    this._clearForm = this._clearForm.bind(this)
   }
 
   static className = 'entry-form';
@@ -56,7 +57,20 @@ class EntryForm extends Component {
       onSubmit(e, __form);
     }
   };
-
+  _clearForm (e){
+    e.currentTarget.parentElement.parentElement.reset();
+    this.setState({
+      slNoValue : "",
+      dateValue : "",
+      supplierValue : "",
+      productIDValue : "",
+      productNameValue : "",
+      productDescriptionValue : "",
+      quantityValue : "",
+      PriceValue : "",
+      defaultProductCatagorySelectedOption : ""
+    })
+  } 
   _productCatagoryHandleChange = (e) => {
     const { value } = e.target;
     this.setState({
@@ -191,7 +205,7 @@ class EntryForm extends Component {
           <FormInput type="text" value={price} className="form-control"  ref="price" placeholder="Price" onChange={this._updatePrice} />
         </div>
         <div className="form-actions">
-          <button type="reset" className="btn btn-form btn-default">Cancel</button>
+          <button type="reset" className="btn btn-form btn-default" onClick={this._clearForm}>Cancel</button>
           <button type="submit" className="btn btn-form btn-primary">OK</button>
         </div>
       </form>
