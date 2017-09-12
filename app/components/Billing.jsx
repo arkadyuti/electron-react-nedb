@@ -12,7 +12,7 @@ export default class Billing extends Component {
 			addAnotherBill: [],
 			stateTimeStamp: Date.now(),
 			notification: false,
-			productOutofStock:false
+			productOutofStock: false
 		};
 		this.removeNotification = this.removeNotification.bind(this);
 	}
@@ -53,7 +53,7 @@ export default class Billing extends Component {
 					stateTimeStamp,
 					productDetails: tempBill
 				});
-				
+
 				_this.props.dbBilling.insert(finalDataToSubmit, function (err, data) {   // Callback is optional
 					// console.log("Data Inserted", data, err);
 					e.target.reset();
@@ -61,19 +61,22 @@ export default class Billing extends Component {
 					setTimeout(_this.removeNotification, 3000);
 				});
 			} else {
-				_this.setState({productOutofStock: true})
+				_this.setState({ productOutofStock: true })
 			}
-			
+
 		});
 	}
 	removeNotification() {
-		this.setState({ notification: false, productOutofStock:false })
+		this.setState({ notification: false, productOutofStock: false })
 	}
 	_addAnotherBill = (e) => {
 		const { state, refs } = this;
 		const { addAnotherBill } = state;
 		const tempBill = addAnotherBill;
 		const formData = {};
+		const _this = this;
+
+
 		for (const field in refs) {
 			formData[field] = refs[field].value;
 		}
@@ -86,18 +89,24 @@ export default class Billing extends Component {
 			subTotal: formData.subTotal,
 			discount: formData.discount
 		})
-		tempBill.push(tempData);
-		this.setState({
-			addAnotherBill: tempBill
-		});
-		refs.productID.value = '';
-		refs.productDesc.value = '';
-		refs.quantity.value = '';
-		refs.amount.value = '';
-		refs.unitPrice.value = '';
-		refs.attentionTo.value = '';
-		refs.subTotal.value = '';
-		refs.discount.value = '';
+
+		_this.props.dbStock.find({ productID: tempData.productID }, function (err, docs) {
+			if (docs.length > 0) {
+				tempBill.push(tempData);
+				_this.setState({
+					addAnotherBill: tempBill
+				});
+			}
+			refs.productID.value = '';
+			refs.productDesc.value = '';
+			refs.quantity.value = '';
+			refs.amount.value = '';
+			refs.unitPrice.value = '';
+			refs.attentionTo.value = '';
+			refs.subTotal.value = '';
+			refs.discount.value = '';
+		})
+
 	}
 
 	calculateAmount = (e) => {
