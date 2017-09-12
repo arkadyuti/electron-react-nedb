@@ -1,6 +1,6 @@
 {
-  "name": "electron-react-nedb",
-  "productName": "electron-react-nedb",
+  "name": "stock-management",
+  "productName": "StockManagement",
   "version": "1.0.0",
   "description": "Electron application based on React, React Router, nedb, Webpack",
   "main": "./main.prod.js",

@@ -1,6 +1,6 @@
-# electron-react-nedb
+# stock-management
 
-### A data entry app for windows/Mac
+### A data entry app for windows/Mac/Linux
 
 <br/>
 
@@ -55,7 +55,8 @@ To package apps for the local platform:
 To package apps with options:
 
 ```bash
-$ npm run package -- --[option]
+$ npm run package package-win
+$ npm run package package-linux
 ```
 
 ## Maintainers
