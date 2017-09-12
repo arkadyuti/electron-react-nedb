@@ -80,35 +80,35 @@ class EntryForm extends Component {
 
   _updateSlNo = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       slNo: value
     });
   };
   _updateDate = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       date: value
     });
   };
   _updateSupplier = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       supplier: value
     });
   };
   _updateProductID = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       productID: value
     });
   };
   _updateProductName = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       productName: value
     });
@@ -116,7 +116,7 @@ class EntryForm extends Component {
 
   _updateProductDescription = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       productDescription: value
     });
@@ -124,14 +124,14 @@ class EntryForm extends Component {
 
   _updateQuantity = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       quantity: value
     });
   };
   _updatePrice = (e) => {
     const { value } = e.target;
-    console.log(value)
+    
     this.setState({
       price: value
     });
