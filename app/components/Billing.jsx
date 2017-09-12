@@ -11,13 +11,15 @@ export default class Billing extends Component {
 		this.state = {
 			addAnotherBill: [],
 			stateTimeStamp: Date.now(),
-			notification: false
+			notification: false,
+			productOutofStock:false
 		};
 		this.removeNotification = this.removeNotification.bind(this);
 	}
 
 	_handleFormData = (e) => {
 		e.persist();
+		const _this = this;
 		const { addAnotherBill } = this.state;
 		const formData = {};
 		const tempBill = addAnotherBill;
@@ -38,29 +40,34 @@ export default class Billing extends Component {
 		});
 		// return
 		console.log(tempData.productID, this.props.dbStock)
-		this.props.dbStock.find({ productID: tempData.productID }, function (err, docs) {
+		_this.props.dbStock.find({ productID: tempData.productID }, function (err, docs) {
 			// docs is an array containing document Earth only
-			console.log(docs,err)
-		});
-		tempBill.push(tempData)
-		const stateTimeStamp = this.state.stateTimeStamp.toString();
-		const finalDataToSubmit = Object.assign({}, {
-			customerName: formData.customerName,
-			phoneNumber: formData.phoneNumber,
-			address: formData.address,
-			stateTimeStamp,
-			productDetails: tempBill
-		});
-		const _this = this;
-		this.props.dbBilling.insert(finalDataToSubmit, function (err, data) {   // Callback is optional
-			// console.log("Data Inserted", data, err);
-			e.target.reset();
-			_this.setState({ notification: true, addAnotherBill: [] })
-			setTimeout(_this.removeNotification, 3000);
+			console.log(docs, err)
+			if (docs.length > 0) {
+				tempBill.push(tempData)
+				const stateTimeStamp = _this.state.stateTimeStamp.toString();
+				const finalDataToSubmit = Object.assign({}, {
+					customerName: formData.customerName,
+					phoneNumber: formData.phoneNumber,
+					address: formData.address,
+					stateTimeStamp,
+					productDetails: tempBill
+				});
+				
+				_this.props.dbBilling.insert(finalDataToSubmit, function (err, data) {   // Callback is optional
+					// console.log("Data Inserted", data, err);
+					e.target.reset();
+					_this.setState({ notification: true, addAnotherBill: [] })
+					setTimeout(_this.removeNotification, 3000);
+				});
+			} else {
+				_this.setState({productOutofStock: true})
+			}
+			
 		});
 	}
 	removeNotification() {
-		this.setState({ notification: false })
+		this.setState({ notification: false, productOutofStock:false })
 	}
 	_addAnotherBill = (e) => {
 		const { state, refs } = this;
@@ -204,6 +211,7 @@ export default class Billing extends Component {
 						<input type="submit" className="btn btn-form btn-primary" value="Submit" />
 					</div>
 					{this.state.notification && <Success message="Your entry added" />}
+					{this.state.productOutofStock && <Success message="Product out of stock" />}
 				</form>
 			</div>
 		);
