@@ -10,8 +10,8 @@ export default class MyStock extends Component {
     };
 	}
   componentDidMount() {
-    const { db } = this.props;
-    db.find({}, (err, data) => {
+    const { dbStock } = this.props;
+    dbStock.find({}, (err, data) => {
       const gotData = data;
       this.setState({
         productData: gotData

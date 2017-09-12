@@ -1,21 +1,27 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Success from 'components/common/Success';
 
 export default class AddEntry extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			notification: false
+		}
 	}
 	
 	_handleFormData = (e) => {
 		const formData = {};
+		let _this = this;
 		for (const field in this.refs) {
 			formData[field] = this.refs[field].value;
 		}
 		console.log(formData);
 
-		this.props.db.insert(formData, function (err, data) {   // Callback is optional
+		this.props.dbStock.insert(formData, function (err, data) {   // Callback is optional
 			console.log("Data Inserted", data, err);
+			_this.setState({ notification: true})
 		});
 		document.forms[0].reset();
 	}
@@ -75,6 +81,7 @@ export default class AddEntry extends Component {
 						<button type="reset" className="btn btn-form btn-default">Cancel</button>
 						<button type="submit" className="btn btn-form btn-primary">OK</button>
 					</div>
+					{this.state.notification && <Success message="Your entry added" />}
 				</form>
       </div>
 		);

@@ -19,8 +19,9 @@ import Billing from '../components/Billing';
 import OldBills from '../components/OldBills';
 import MyStock from '../components/MyStock';
 import Footer from '../components/Footer';
+import SyncData from '../components/SyncData';
 
-const db = new Datastore({ filename: 'data/datasource.json', autoload: true });
+const dbStock = new Datastore({ filename: 'data/datasource.json', autoload: true });
 const dbBilling = new Datastore({ filename: 'data/datasource-billing.json', autoload: true });
 export class HomePage extends Component {
   constructor(props) {
@@ -36,10 +37,11 @@ export class HomePage extends Component {
             <LeftMainNav {...this.props} />
             <Switch>
               <Route exact path='/' component={DashBoard}/>
-              <Route path='/billing' render={()=><Billing {...this.props} dbBilling={dbBilling} dbStock= {db} />} />
-              <Route path='/oldBill' render={()=><OldBills {...this.props} db={dbBilling} />} />
-              <Route path='/stock' render={()=><MyStock {...this.props} db={db} />} />
-              <Route path="/entry" render={() =><AddEntry {...this.props} db={db} />} />
+              <Route path='/billing' render={()=><Billing {...this.props} dbBilling={dbBilling} dbStock= {dbStock} />} />
+              <Route path='/oldBill' render={()=><OldBills {...this.props} dbBilling={dbBilling} />} />
+              <Route path='/stock' render={()=><MyStock {...this.props} dbStock={dbStock} />} />
+              <Route path="/entry" render={() =><AddEntry {...this.props} dbStock={dbStock} />} />
+              <Route path="/sync" render={() =><SyncData {...this.props} dbBilling={dbBilling} dbStock= {dbStock} />} />
             </Switch>
           </div>
         </div>

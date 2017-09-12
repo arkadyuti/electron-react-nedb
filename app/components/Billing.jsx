@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Datastore from 'nedb';
-import Success from 'components/common/Success'
+import Success from 'components/common/Success';
 
 
 export default class Billing extends Component {
