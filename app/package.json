@@ -1,8 +1,8 @@
 {
-  "name": "stock-management",
-  "productName": "StockManagement",
+  "name": "account-management",
+  "productName": "AccountManagement",
   "version": "1.0.0",
-  "description": "Electron application based on React, React Router, nedb, Webpack",
+  "description": "Account management will be way much easier than ever, with the simplified UI",
   "main": "./main.prod.js",
   "author": {
     "name": "Arkadyuti",

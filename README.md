@@ -1,6 +1,6 @@
-# stock-management
+# account-management
 
-### A data entry app for windows/Mac/Linux
+### Account management app for windows/Mac/Linux. Generating bills, retrieving the old bills and product entry is now much more easier
 
 <br/>
 
@@ -37,14 +37,6 @@ You Run these two commands __simultaneously__ in different console tabs:
 ```bash
 $ npm run hot-updates-server
 $ npm run start-hot-renderer
-```
-
-
-## Sass support
-
-If you want to use Sass in your app, you only need to import `.sass` files instead of `.css` once:
-```js
-import './app.global.scss';
 ```
 
 

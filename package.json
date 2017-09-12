@@ -1,8 +1,8 @@
 {
-  "name": "stock-management",
-  "productName": "StockManagement",
+  "name": "account-management",
+  "productName": "AccountManagement",
   "version": "0.12.0",
-  "description": "Electron application based on React, React Router, nedb",
+  "description": "Account management will be way much easier than ever, with the simplified UI",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
     "test-all": "npm run lint && npm run flow && npm run test && npm run build && npm run test-e2e",
