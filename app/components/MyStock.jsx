@@ -17,7 +17,6 @@ export default class MyStock extends Component {
         productData: gotData
       });
     });
-    console.log('got called')
   }
 
   _handleClick = (e) => {
