@@ -34,8 +34,9 @@ export default class AddEntry extends Component {
 		return (
 		  <div className="pane padded-bottom-more entry-form">
 				<EntryForm
-				productCatagoryOptions={productCatagoryOptions}
-				defaultProductCatagorySelectedOption={2}
+					productCatagoryOptions={productCatagoryOptions}
+					onSubmit={this._handleFormData}
+					defaultProductCatagorySelectedOption={2}
 				/>
 				{this.state.notification && <Success message="Your entry added" />}
       </div>
