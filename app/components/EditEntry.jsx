@@ -43,17 +43,19 @@ export default class EditEntry extends Component {
     let { clickedEditButton = 0 } = props;
     console.log(clickedEditButton)
     const dataToEdit = productData[clickedEditButton];
-    console.log(dataToEdit)
     const productCatagoryOptions = [
 			{ label : 'one', value: 1 }, { label : 'two', value: 2 }
 		]
 		return (
 		  <div className="pane padded-bottom-more entry-form">
-				<EntryForm
-					productCatagoryOptions={productCatagoryOptions}
-					onSubmit={this._handleFormData}
-          {...dataToEdit}
-				/>
+				{dataToEdit && (
+          <EntryForm
+            productCatagoryOptions={productCatagoryOptions}
+            onSubmit={this._handleFormData}
+            {...dataToEdit}
+          />
+        )}
+        
 				{this.state.notification && <Success message="Your entry added" />}
       </div>
 		);
