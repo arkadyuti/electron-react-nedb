@@ -25,8 +25,7 @@ class EntryForm extends Component {
       quantity,
       price,
       defaultProductCatagorySelectedOption
-    }
-    this._clearForm = this._clearForm.bind(this)
+    };
   }
 
   static className = 'entry-form';
@@ -57,7 +56,7 @@ class EntryForm extends Component {
       onSubmit(e, __form);
     }
   };
-  _clearForm (e){
+  _clearForm = (e) => {
     e.currentTarget.parentElement.parentElement.reset();
     this.setState({
       slNoValue : "",
@@ -70,13 +69,13 @@ class EntryForm extends Component {
       PriceValue : "",
       defaultProductCatagorySelectedOption : ""
     })
-  } 
+  };
   _productCatagoryHandleChange = (e) => {
     const { value } = e.target;
     this.setState({
       defaultProductCatagorySelectedOption: value
     });
-  }
+  };
 
   _updateSlNo = (e) => {
     const { value } = e.target;
