@@ -24,13 +24,10 @@ export default class EditEntry extends Component {
   }
 	
 	_handleFormData = (e) => {
-		const formData = {};
-		let _this = this;
-		for (const field in this.refs) {
-			formData[field] = this.refs[field].value;
-		}
+    let _this = this;
+		const { state } = this.__el;
 
-		this.props.dbStock.insert(formData, function (err, data) {   // Callback is optional
+		this.props.dbStock.insert(state, function (err, data) {   // Callback is optional
 			console.log("Data Inserted", data, err);
 			_this.setState({ notification: true})
 		});
@@ -53,6 +50,7 @@ export default class EditEntry extends Component {
             productCatagoryOptions={productCatagoryOptions}
             onSubmit={this._handleFormData}
             {...dataToEdit}
+            ref={c => { this.__el = c; return this.__el; }}
           />
         )}
         
