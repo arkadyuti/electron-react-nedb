@@ -39,6 +39,13 @@ $ npm run hot-updates-server
 $ npm run start-hot-renderer
 ```
 
+## Contribution 
+
+```sh
+
+Please raise PR to our development branch
+
+```
 
 ## Packaging
 
