@@ -26,6 +26,9 @@ export class HomePage extends Component {
   constructor(props) {
 		super(props);
 	}
+  componentWillMount() {
+    this.props.history.push('/');
+  }
   render() {
     let location = this.props.location.pathname;
     return (
